@@ -1,0 +1,65 @@
+{
+  "name": "genpark-personal-agent-home-appliance-energy-vampire-phantom-draw-skill",
+  "version": "1.0.0",
+  "title": "Home Appliance Vampire Power & Phantom Draw Sentinel Skill",
+  "description": "Smart plug circuit standby phantom load audit, appliance vampire power waste identification, and automated smart breaker cutoff scheduler. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "vampire-power",
+    "phantom-draw",
+    "home-energy",
+    "smart-plugs",
+    "energy-efficiency",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "audit_standby_vampire_loads",
+      "description": "Calculate annual electrical cost waste from standby phantom draw across entertainment and computing equipment.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "appliance_name": {
+            "type": "string"
+          },
+          "standby_watts": {
+            "type": "number"
+          },
+          "hours_standby_per_day": {
+            "type": "number"
+          },
+          "electric_tariff_usd_per_kwh": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "appliance_name",
+          "standby_watts"
+        ]
+      }
+    },
+    {
+      "name": "generate_smart_breaker_cutoff_schedule",
+      "description": "Synthesize smart plug relay cutoff schedules during deep sleep hours (01:00 - 06:00).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "circuit_id": {
+            "type": "string"
+          },
+          "appliance_category": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "circuit_id",
+          "appliance_category"
+        ]
+      }
+    }
+  ]
+}
